@@ -1,0 +1,61 @@
+﻿using System;
+
+namespace Modulo2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Gerente gerente = new Gerente();
+            gerente.Nome = "Carlos";
+            gerente.Salario = 8000.0;
+
+            Desenvolvedor dev = new Desenvolvedor();
+            dev.Nome = "Cesar";
+            dev.Salario = 5000.0;
+
+            Console.WriteLine($"Gerente: {gerente.Nome}");
+            Console.WriteLine($"Salário: R$ {gerente.Salario:F2}");
+            Console.WriteLine($"Bônus Anual: R$ {gerente.CalcularBonusAnual():F2}");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"Desenvolvedor: {dev.Nome}");
+            Console.WriteLine($"Salário: R$ {dev.Salario:F2}");
+            Console.WriteLine($"Bônus Anual: R$ {dev.CalcularBonusAnual():F2}");
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Modulo2
+{
+    public class Funcionario
+    {
+        public string Nome { get; set; }
+        public double Salario { get; set; }
+        public virtual double CalcularBonusAnual()
+        {
+            return Salario * 0.10;
+        }
+    }
+    public class Gerente : Funcionario
+    {
+        public new double CalcularBonusAnual()
+        {
+            return (Salario * 0.15) + 1000.0;
+        }
+    }
+    public class Desenvolvedor : Funcionario
+    {
+        public new double CalcularBonusAnual()
+        {
+            return Salario * 0.12;
+        }
+    }
+}
