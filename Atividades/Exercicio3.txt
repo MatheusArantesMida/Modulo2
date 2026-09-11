@@ -1,0 +1,62 @@
+﻿using System;
+
+namespace Modulo2
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Retangulo retangulo = new Retangulo(5, 4);
+            Circulo circulo = new Circulo(3);
+
+            Console.WriteLine("Área do retângulo: " + retangulo.CalcularArea());
+            Console.WriteLine("Área do círculo: " + circulo.CalcularArea());
+        }
+    }
+}
+
+namespace Modulo2
+{
+    public abstract class FormaGeometrica
+    {
+        public abstract double CalcularArea();
+    }
+}
+
+namespace Modulo2
+{
+    public class Retangulo : FormaGeometrica
+    {
+        public double Largura { get; set; }
+        public double Altura { get; set; }
+        public Retangulo(double largura, double altura)
+        {
+            Largura = largura;
+            Altura = altura;
+        }
+        public override double CalcularArea()
+        {
+            return Largura * Altura;
+        }
+    }
+}
+
+using System;
+
+namespace Modulo2
+{
+    public class Circulo : FormaGeometrica
+    {
+        public double Raio { get; set; }
+
+        public Circulo(double raio)
+        {
+            Raio = raio;
+        }
+
+        public override double CalcularArea()
+        {
+            return Math.PI * Raio * Raio;
+        }
+    }
+}
